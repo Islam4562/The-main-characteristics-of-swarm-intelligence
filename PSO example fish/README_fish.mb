@@ -1,0 +1,61 @@
+# Fish Classification with PSO-Optimized Neural Network
+
+## Overview
+This project implements a Particle Swarm Optimization (PSO) algorithm to optimize the hyperparameters of a neural network for classifying fish species based on their physical characteristics. The neural network is built using PyTorch, and the PSO algorithm searches for the best number of neurons in the hidden layer and learning rate.
+
+## Features
+- Synthetic dataset generation for fish classification
+- Fully connected neural network using PyTorch
+- PSO algorithm for optimizing neural network hyperparameters
+- Training and evaluation of the model
+
+## Requirements
+To run this project, install the required dependencies:
+```bash
+pip install numpy torch
+```
+
+## Dataset
+The dataset is generated synthetically with four features:
+- Weight
+- Length
+- Width
+- Height
+
+The target variable represents three fish species:
+- 0: Small Fish
+- 1: Medium Fish
+- 2: Large Fish
+
+## Model Architecture
+The neural network consists of:
+- Input layer with 4 neurons (one for each feature)
+- One hidden layer (size optimized by PSO)
+- Output layer with 3 neurons (for classification)
+
+## PSO Optimization
+The PSO algorithm optimizes:
+- Number of neurons in the hidden layer (range: 10-100)
+- Learning rate (range: 0.0001-0.1)
+
+## Usage
+Run the script to start training and optimization:
+```bash
+python fish_classification.py
+```
+
+## Output
+The script prints the optimal hyperparameters and the corresponding loss value:
+```bash
+Optimal parameters: [Neurons, Learning Rate]
+Optimal loss: [Value]
+```
+
+## Future Improvements
+- Use a real-world fish dataset
+- Implement additional PSO variations for enhanced optimization
+- Experiment with different activation functions and architectures
+
+## License
+This project is open-source and available under the MIT License.
+
