@@ -1,0 +1,67 @@
+# Ant Colony Optimization for Metro Route Optimization 
+
+## Overview
+This project implements an **Ant Colony Optimization (ACO)** algorithm to find the optimal route in a metro network. The algorithm simulates ants searching for the shortest path between a starting and an ending station, dynamically updating pheromone levels to refine the search over multiple iterations.
+
+## Features
+- **Graph-based Metro Network**: Modeled as a weighted graph using NetworkX.
+- **Ant Colony Optimization**: Finds the shortest path using pheromone-based decision-making.
+- **Pheromone Evaporation & Deposition**: Balances exploration and exploitation.
+- **Probabilistic Path Selection**: Based on pheromone levels and edge weights.
+- **Modular Design**: Separate functions for key operations.
+
+## Dependencies
+Ensure you have Python installed along with the required libraries:
+```
+pip install numpy networkx
+```
+
+## How It Works
+1. **Graph Representation**: The metro stations and connections are represented as a graph with weighted edges.
+2. **Ants Find Routes**: Each ant starts at a given station and probabilistically chooses the next station based on pheromone levels and edge weights.
+3. **Pheromone Update**:
+   - Pheromones evaporate over time.
+   - Successful routes receive more pheromones.
+4. **Optimization Iterations**: The process repeats, refining the best route over time.
+
+## Formulas Used
+- **Probability of choosing the next station:**
+  
+  \[ P_i = \frac{\tau_{i}^{\alpha} \cdot \eta_{i}^{\beta}}{\sum_{j} \tau_{j}^{\alpha} \cdot \eta_{j}^{\beta}} \]
+  
+  where:
+  - \( P_i \) is the probability of selecting station \( i \)
+  - \( \tau_i \) is the pheromone level on the path to \( i \)
+  - \( \eta_i = \frac{1}{d_i} \) is the inverse of the distance \( d_i \)
+  - \( \alpha, \beta \) control the influence of pheromones and distance.
+
+- **Pheromone Evaporation:**
+  
+  \[ \tau_{ij} = (1 - \rho) \cdot \tau_{ij} \]
+  
+- **Pheromone Deposit:**
+  
+  \[ \tau_{ij} = \tau_{ij} + \frac{Q}{L} \]
+  
+  where \( L \) is the route length and \( Q \) is a constant.
+
+## Running the Code
+Execute the script using:
+```
+python metro_aco.py
+```
+
+## Example Output
+```
+Best route found: ['A', 'B', 'C', 'D', 'J', 'F']
+Best route length: 10
+```
+
+## Future Enhancements
+- Implement real-time station congestion updates.
+- Add dynamic rerouting based on passenger flow.
+- Extend to a multi-line metro network.
+
+## Author
+Developed as part of a research project on **Swarm Intelligence** and **Route Optimization**
+
